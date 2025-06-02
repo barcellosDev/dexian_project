@@ -9,6 +9,7 @@ use App\Models\Order;
 use Exception;
 use Illuminate\Http\Request;
 use App\Models\Client;
+use App\Models\OrderProduct;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
@@ -74,13 +75,16 @@ class OrderController extends Controller
             $order = Order::findOrFail($id);
 
             $products = $request->input('products');
-            $products = json_decode($products, true);
-            $products = array_column($products, 'id');
+            $products = json_decode($products);
 
-            $order->products()->sync($products);
+            // $order->products()->sync($products);
+            OrderProduct::where('order_id', $order->id)
+                ->whereNotIn('product_id', $products)
+                ->forceDelete();
+
+            $order->products()->syncWithoutDetaching($products);
 
             return ApiResponse::success([], 'Pedido alterado');
-
         } catch (Exception $e) {
             return ApiResponse::error($e->getMessage());
         }
@@ -99,7 +103,7 @@ class OrderController extends Controller
             $order->delete();
 
             $maxId = Order::max('id') ?? 0;
-            DB::statement("ALTER TABLE orders AUTO_INCREMENT = " . $maxId+1);
+            DB::statement("ALTER TABLE orders AUTO_INCREMENT = " . $maxId + 1);
 
             return ApiResponse::success([], 'Pedido removido');
         } catch (Exception $e) {

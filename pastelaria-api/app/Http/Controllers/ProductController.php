@@ -103,11 +103,15 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $fullBaseUrl = request()->getSchemeAndHttpHost();
 
-        $image_filename = str_replace($fullBaseUrl, '', $product->photo_src);
+        if ($product->photo_src) {
+            $image_filename = str_replace($fullBaseUrl, '', $product->photo_src);
 
-        //Storage::disk('public')->delete($image_filename);
+            if (Storage::disk('public')->exists($image_filename)) {
+                Storage::disk('public')->delete($image_filename);
+            }
+        }
+
         $product->delete();
-
         return ApiResponse::success([], 'Produto removido');
     }
 }

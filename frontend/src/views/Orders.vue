@@ -53,7 +53,7 @@ function onSavedOrder(canceled = false) {
                 Nenhum pedido realizado
             </h1>
             <div @click="EditOrder(order)" class="order-card-wrapper" v-for="(order, i) in orders" :key="i">
-                <div class="delete-item selectable" @click.stop="DeleteOrder(order.id)">
+                <div class="delete-item selectable delete-order" @click.stop="DeleteOrder(order.id)">
                     <span>X</span>
                 </div>
                 <OrderCard class="selectable" :order="order">
@@ -99,5 +99,10 @@ function onSavedOrder(canceled = false) {
 .order-card-wrapper:not(:first-child) {
     padding-top: 2em;
     word-break: keep-all;
+}
+
+.delete-order {
+    right: -25px;
+    top: -25px;
 }
 </style>

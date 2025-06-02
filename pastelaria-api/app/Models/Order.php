@@ -23,6 +23,28 @@ class Order extends Model
 
     public function products()
     {
-        return $this->belongsToMany(Product::class)->withTimestamps();
+        return $this->belongsToMany(Product::class)
+            ->using(OrderProduct::class)
+            ->withTimestamps();
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($order) {
+            if ($order->isForceDeleting()) {
+                $order->products()->detach();
+                $order->products()->forceDelete();
+            } else {
+                $order->products()->each(function ($product) {
+                    $product->delete();
+                });
+
+                $order->products()->newPivotStatement()
+                    ->where('order_id', $order->id)
+                    ->update(['deleted_at' => now()]);
+            }
+        });
     }
 }

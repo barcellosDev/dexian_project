@@ -93,7 +93,6 @@ class ClientController extends Controller
             ]);
 
             return ApiResponse::success([], "Cliente atualizado");
-
         } catch (Exception $e) {
             return ApiResponse::error($e);
         }
@@ -109,14 +108,13 @@ class ClientController extends Controller
     {
         try {
             $client = Client::findOrFail($id);
-    
+
             foreach ($client->orders as $order) {
-                $order->products()->detach();
                 $order->delete();
             }
-    
+
             $client->delete();
-    
+
             return ApiResponse::success([], "Cliente removido");
         } catch (Exception $e) {
             return ApiResponse::error($e->getMessage());

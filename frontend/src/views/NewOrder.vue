@@ -47,7 +47,7 @@ async function SaveOrder() {
     if (props.order?.id) {
         const payload = new FormData()
         payload.append('_method', 'PUT')
-        payload.append('products', JSON.stringify(addedProducts.value))
+        payload.append('products', JSON.stringify(addedProducts.value.map(product => product.id)))
 
         await update(props.order?.id, payload)
 

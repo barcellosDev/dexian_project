@@ -45,9 +45,9 @@ async function DeleteClient(clientId) {
     const { user } = useAuth()
     await destroy(clientId)
 
-    if (error.value !== null && clientId == user.value.id) {
-        sessionStorage.removeItem('auth_token')
+    if (error.value === null && clientId == user.value.id) {
         router.push('/login')
+        sessionStorage.removeItem('auth_token')
         return
     }
 

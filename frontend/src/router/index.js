@@ -46,7 +46,7 @@ router.beforeEach(async (to, from, next) => {
 
   if (to?.meta?.requiresAuth && !isAuthenticated) {
     next({ name: 'login' })
-  } else if (to.name === 'login' && isAuthenticated) {
+  } else if ((to.name === 'login' || to.name === 'root') && isAuthenticated) {
     next({ name: 'products' })
   } else {
     next()
