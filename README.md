@@ -63,6 +63,8 @@ php artisan storage:link
 
 ```bash
 php artisan migrate:fresh --seed
+
+Será pedido para confirmar a migration, porque o ambiente esta setado como PRODUCTION, apenas digite "yes" e continue
 ```
 
 Isso irá criar as tabelas e inserir dados de exemplo.
