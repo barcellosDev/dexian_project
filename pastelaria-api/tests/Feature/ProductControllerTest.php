@@ -11,7 +11,7 @@ use Tests\TestCase;
 
 class ProductControllerTest extends TestCase
 {
-    use RefreshDatabase;
+    
 
     public function test_authenticated_client_can_create_a_product_with_photo()
     {

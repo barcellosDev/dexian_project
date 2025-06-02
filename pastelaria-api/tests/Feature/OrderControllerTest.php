@@ -11,7 +11,7 @@ use Tests\TestCase;
 
 class OrderControllerTest extends TestCase
 {
-    use RefreshDatabase;
+    
 
     public function test_authenticated_client_can_create_order_with_products()
     {

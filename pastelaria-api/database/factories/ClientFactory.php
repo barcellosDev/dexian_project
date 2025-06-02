@@ -17,8 +17,8 @@ class ClientFactory extends Factory
     public function definition()
     {
         return [
-            'name' => 'cliente ' . random_int(1, 100),
-            'email' => 'cliente '. random_int(1, 100) .' @gmail.com',
+            'name' => 'cliente' . md5( (string) microtime() ) . sha1(random_int(PHP_INT_MIN, PHP_INT_MAX)),
+            'email' => 'cliente'. md5( (string) microtime() ) . sha1(random_int(PHP_INT_MIN, PHP_INT_MAX)) . ' @gmail.com',
             'call_number' => '23123',
             'birth_date' => '2000-08-10',
             'address' => 'rua tal',
