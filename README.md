@@ -79,6 +79,14 @@ Isso irá criar as tabelas e inserir dados de exemplo.
 
 ---
 
+## Rodar testes do Backend (FORA DO DOCKER)
+
+```bash
+cd pastelaria-api
+php artisan migrate:fresh
+php artisan test
+```
+
 ## **Um usuário (cliente) inicial será criado com o email de: cliente1@gmail.com** mas você pode criar tanto na área de Login tanto depois de logar, no painel de Clientes
 
 ## 🖼️ Features
