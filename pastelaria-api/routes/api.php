@@ -8,7 +8,6 @@ use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,11 +44,13 @@ Route::post('/login', function (Request $request) {
     return ApiResponse::error("Email incorreto");
 });
 
-Route::post('/logout', function (Request $request) {
+Route::get('/logout', function (Request $request) {
     Auth::logout();
     $request->session()->invalidate();
     $request->session()->regenerateToken();
-    return response()->json(['message' => 'Logged out']);
+
+
+    return ApiResponse::success([], 'Deslogado');
 });
 
 Route::middleware('auth:sanctum')->get('/me', function (Request $request) {

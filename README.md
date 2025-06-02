@@ -34,6 +34,9 @@ Verifique as portas no seu arquivo `docker-compose.yml` caso use outras.
 
 ```bash
 docker exec -it pastelaria-api-app bash
+
+** IMPORTANTE **
+O container do FRONTEND pode falhar no início, pois acaba por iniciar antes do container do nginx, portanto é só iniciar manualmente que está tudo certo
 ```
 
 ### 2. Instalar dependências
@@ -65,6 +68,8 @@ php artisan migrate:fresh --seed
 Isso irá criar as tabelas e inserir dados de exemplo.
 
 ---
+
+## **Um usuário (cliente) inicial será criado com o email de: cliente1@gmail.com** mas você pode criar tanto na área de Login tanto depois de logar, no painel de Clientes
 
 ## 🖼️ Features
 

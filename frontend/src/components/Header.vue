@@ -1,17 +1,18 @@
 <script setup>
-import { useRouter } from 'vue-router'
 import { useAuth } from '@/composables/useAuth'
 import { callApi } from '@/composables/callApi';
+import LoadingOverlay from './LoadingOverlay.vue';
+import router from '@/router';
+import { ref } from 'vue';
 
-const router = useRouter()
 const { user } = useAuth()
-
+const loading = ref(false)
 
 async function Logout() {
-    await callApi('logout', {
-        method: 'POST'
-    })
-
+    loading.value = true
+    await callApi('logout')
+    loading.value = false
+    sessionStorage.removeItem('auth_token')
     router.push('/login')
 }
 
@@ -35,6 +36,7 @@ async function Logout() {
             </div>
         </div>
     </h1>
+    <LoadingOverlay v-if="loading" />
 </template>
 
 <style scoped>

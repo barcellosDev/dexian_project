@@ -78,7 +78,7 @@ class ProductController extends Controller
         $path = null;
 
         if ($request->hasFile('photo')) {
-            $path = $fullBaseUrl . "/" . $request->file('photo')->store('images', 'public');
+            $path = $fullBaseUrl . "/storage/" . $request->file('photo')->store('images', 'public');
         }
 
         // Update product
