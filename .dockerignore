@@ -1,0 +1,33 @@
+# General
+.git
+.gitignore
+Dockerfile
+docker-compose.yml
+README.md
+.env
+.env.*
+
+# Node.js (Vue frontend)
+node_modules
+frontend/node_modules
+frontend/dist
+
+# Laravel (PHP backend)
+vendor
+pastelaria-api/vendor
+pastelaria-api/node_modules
+pastelaria-api/public/storage  # avoid symlink errors
+pastelaria-api/public/storage/
+pastelaria-api/public/storage/**
+pastelaria-api/storage/*.key
+pastelaria-api/storage/*.log
+pastelaria-api/.env
+pastelaria-api/.env.*
+
+# OS and Editor files
+.DS_Store
+*.swp
+*.swo
+.idea
+.vscode
+*.log
