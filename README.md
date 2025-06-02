@@ -53,6 +53,14 @@ cp .env.example .env
 php artisan key:generate
 ```
 
+### 4. Rodar testes (Necessário passo anterior)
+
+```bash
+php artisan migrate:fresh
+
+php artisan test
+```
+
 ### 4. Criar link simbólico para as imagens funcionarem
 
 ```bash
