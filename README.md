@@ -53,7 +53,7 @@ cp .env.example .env
 php artisan key:generate
 ```
 
-### 4. Rodar testes (Necessário passo anterior)
+###  4. 🧪 Testes unitários
 
 ```bash
 php artisan migrate:fresh
@@ -61,13 +61,13 @@ php artisan migrate:fresh
 php artisan test
 ```
 
-### 4. Criar link simbólico para as imagens funcionarem
+### 5. Criar link simbólico para as imagens funcionarem
 
 ```bash
 php artisan storage:link
 ```
 
-### 5. Rodar as migrations e seeders
+### 6. Rodar as migrations e seeders
 
 ```bash
 php artisan migrate:fresh --seed
@@ -79,15 +79,8 @@ Isso irá criar as tabelas e inserir dados de exemplo.
 
 ---
 
-## Rodar testes do Backend (FORA DO DOCKER)
-
-```bash
-cd pastelaria-api
-php artisan migrate:fresh
-php artisan test
-```
-
 ## **Um usuário (cliente) inicial será criado com o email de: cliente1@gmail.com** mas você pode criar tanto na área de Login tanto depois de logar, no painel de Clientes
+
 
 ## 🖼️ Features
 
@@ -104,15 +97,6 @@ php artisan test
 - **Primeiro**, o frontend faz uma requisição para obter o `csrf-cookie`.
 - **Em seguida**, o login é feito, e a rota `/api/me` retorna os dados do usuário autenticado.
 
----
-
-## 🧪 Testes unitários
-
-### Executar testes:
-
-```bash
-docker-compose exec app php artisan test
-```
 ---
 
 ## 🛠️ Scripts úteis
