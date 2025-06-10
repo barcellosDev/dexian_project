@@ -10,7 +10,7 @@ use Tests\TestCase;
 
 class ClientControllerTest extends TestCase
 {
-    use RefreshDatabase;
+    
 
     public function test_authenticated_user_can_create_a_client()
     {
