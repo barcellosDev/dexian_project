@@ -79,7 +79,7 @@ php artisan migrate:fresh
 php artisan test
 ```
 
-## **Um usuário (cliente) inicial será criado com o email de: cliente1@gmail.com** mas você pode criar tanto na área de Login tanto depois de logar, no painel de Clientes
+## **Um usuário (cliente) inicial será criado com o email de: cliente1@gmail.com** mas você pode criar mais clientes depois de logar, no painel de Clientes
 
 ## 🖼️ Features
 
